@@ -9,7 +9,7 @@
 使用 Docker 快速部署（推荐）：
 
 ```bash
-# 1. 拉取镜像
+# 1. 拉取镜像（支持 amd64 和 arm64 架构）
 docker pull xinghehy/netease-musician-task:latest
 
 # 2. 运行容器（需先配置 Redis 和环境变量）
@@ -24,6 +24,12 @@ docker run -d --name netease-musician-task \
 # 3. 在 Redis 中添加任务（示例）
 # HSET netease:music:task task1 '{"phone": "13800138000", "password": "your_password"}'
 ```
+
+**支持的架构**：
+- ✅ `linux/amd64` (x86_64)
+- ✅ `linux/arm64` (aarch64)
+
+Docker 会自动拉取适合你系统架构的镜像版本。
 
 详细配置说明见下文。
 
@@ -209,11 +215,15 @@ python main.py
 
 ### 使用预构建镜像（推荐）
 
-可以直接使用已发布的 Docker 镜像，无需本地构建：
+可以直接使用已发布的 Docker 镜像，无需本地构建。镜像支持多架构（amd64/arm64），Docker 会自动选择适合你系统的版本：
 
 ```bash
 docker pull xinghehy/netease-musician-task:latest
 ```
+
+**支持的架构**：
+- `linux/amd64` - 适用于 x86_64 处理器（Intel/AMD）
+- `linux/arm64` - 适用于 ARM64 处理器（树莓派 4/5、Apple Silicon、ARM 服务器等）
 
 ### 构建镜像
 
