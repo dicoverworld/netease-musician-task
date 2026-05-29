@@ -252,7 +252,7 @@ def retry_with_backoff(func, max_retries=3, delay=2, task_name="任务"):
 def daily_task_runner():
     """每日任务执行函数（日常签到、音乐人签到等）"""
     if "--once" not in sys.argv:
-        sleeptime = random.randit(1, 30)
+        sleeptime = random.randint(1, 30)
         logger.info(f"随机等待 {sleeptime} 分钟后再运行")
         time.sleep(sleeptime * 60)
     # 汇总给企业微信的精简结果（按用户聚合），避免推送完整日志
@@ -470,7 +470,7 @@ def daily_task_runner():
 def interval_task_runner():
     """间隔任务执行函数（音乐人发布动态任务）"""
     if "--once" not in sys.argv:
-        sleeptime = random.randit(1, 30)
+        sleeptime = random.randint(1, 30)
         logger.info(f"随机等待 {sleeptime} 分钟后再运行")
         time.sleep(sleeptime * 60)
     # 汇总给企业微信的精简结果（按用户聚合），避免推送完整日志
